@@ -4,6 +4,7 @@ python-obdii
 An OBD-ii interface in Python
 
 I am using an OBDLink MX Bluetooth scantool and a 2007 Lexus ES 350.
+Tested on Python 2.7.2
 
 Requires PySerial http://pyserial.sourceforge.net/pyserial.html
 

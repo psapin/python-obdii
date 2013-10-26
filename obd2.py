@@ -31,6 +31,7 @@ class OBDConnection:
 			return str(data)
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
+			return -1
 
 	def oneByteCommand(self, command):
 		try:
@@ -44,6 +45,7 @@ class OBDConnection:
 			return byteA
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
+			return -1
 
 	def twoByteCommand(self, command):
 		try:
@@ -53,9 +55,11 @@ class OBDConnection:
 			split_data = data.split(' ')
 			print split_data
 			byteA = float(int('0x'+split_data[4], 0 ))
+			byteB = float(int('0x'+split_data[5], 0 ))
 			print byteA
-			return byteA
+			return byteA, byteB
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
+			return -1, -1
 
 

@@ -1,22 +1,18 @@
-
-#import time
-#import curses
 import serial
 
 GREEN = '\033[92m'
 BLUE = '\033[94m'
-HEADER = '\033[95m'
-WARNING = '\033[93m'
+PINK = '\033[95m'
+YELLOW = '\033[93m'
 RED = '\033[91m'
 ENDC = '\033[0m'
-
 
 class OBDConnection:
 
 	ser = None
 
 	def __init__(self, serialName):
-		print GREEN + 'Opening serial connection on ' + BLUE + serialName + ENDC
+		print PINK + 'Opening serial connection on ' + BLUE + serialName + ENDC
 		try:
 			self.ser = serial.Serial(serialName, 38400, timeout=3)
 			print GREEN + 'Successfully connected to ' + serialName + '!' + ENDC

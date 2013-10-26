@@ -1,10 +1,11 @@
 from obd2 import OBDConnection
-
+#import time
+#import curses
 
 GREEN = '\033[92m'
 BLUE = '\033[94m'
-HEADER = '\033[95m'
-WARNING = '\033[93m'
+PINK = '\033[95m'
+YELLOW = '\033[93m'
 RED = '\033[91m'
 ENDC = '\033[0m'
 

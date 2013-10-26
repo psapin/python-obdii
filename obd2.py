@@ -12,6 +12,8 @@ ENDC = '\033[0m'
 
 ser = None
 
+#use ' ls /dev/tty* ' to list available serial ports
+#I am using a bluetooth OBDLink MX scantool
 ser_name = '/dev/tty.OBDLinkMX-STN-SPP'
 
 def connectSerial(serialName):
@@ -23,6 +25,7 @@ def connectSerial(serialName):
 		print RED + 'Could not connect! Aborting!' + ENDC
 		exit()
 
+#gets the ELM 327 version
 def getElmInfo():
 	try:
 		ser.write("ATI\r")

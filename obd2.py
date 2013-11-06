@@ -25,10 +25,16 @@ class OBDConnection:
 		try:
 			self.ser.write("ATI\r")
 			data = self.ser.readline()
-			print data
-			speed_hex = data.split(' ')
-			print speed_hex
-			return str(data)
+			return data[:-1]
+		except OSError:
+			print RED + 'Command timed out!' + ENDC
+			return -1
+
+	def sendRawCommand(self, command):
+		try:
+			self.ser.write(command)
+			data = self.ser.readline()
+			return data[:-1]
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
 			return -1
@@ -37,11 +43,8 @@ class OBDConnection:
 		try:
 			self.ser.write(command)
 			data = self.ser.readline()
-			print data
 			split_data = data.split(' ')
-			print split_data
 			byteA = float(int('0x'+split_data[4], 0 ))
-			print byteA
 			return byteA
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
@@ -51,12 +54,9 @@ class OBDConnection:
 		try:
 			self.ser.write(command)
 			data = self.ser.readline()
-			print data
 			split_data = data.split(' ')
-			print split_data
 			byteA = float(int('0x'+split_data[4], 0 ))
 			byteB = float(int('0x'+split_data[5], 0 ))
-			print byteA
 			return byteA, byteB
 		except OSError:
 			print RED + 'Command timed out!' + ENDC
